@@ -1,0 +1,35 @@
+
+
+<div class="container">
+  <div class="example-container mat-elevation-z0">
+    <table mat-table matSort [dataSource]="dataSource">
+
+      <!-- Position Column -->
+      <ng-container matColumnDef="flag">
+        <th mat-header-cell *matHeaderCellDef> Flag </th>
+        <td mat-cell *matCellDef="let element"> <img src="{{element.flag}}" alt="{{element.flag}}"> </td>
+
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef  mat-sort-header> Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+      </ng-container>
+
+      <!-- Weight Column -->
+      <ng-container matColumnDef="population">
+        <th mat-header-cell *matHeaderCellDef  mat-sort-header> Population </th>
+        <td mat-cell *matCellDef="let element"> {{element.population}} </td>
+      </ng-container>
+   
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;" [routerLink]="['/country/',row['alpha3Code']]"></tr>
+
+    </table>
+    <mat-paginator [pageSizeOptions]="[10, 20, 30]" showFirstLastButtons class="mat-paginator-sticky"></mat-paginator>
+
+  </div>
+</div>
+

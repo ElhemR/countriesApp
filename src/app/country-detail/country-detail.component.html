@@ -1,0 +1,116 @@
+ <div class="goBack"> <a class="goBack" mat-raised-button href="/countries"> All countries </a> </div> 
+
+<mat-card class="make-scrollable country-card" flex>
+
+  <mat-card-header>
+    <img mat-card-avatar class="icon-flag" src="{{getProperty('flag')}}">
+    <mat-card-title>{{getProperty('name')}}</mat-card-title>
+
+    <mat-card-subtitle>
+      Native name: {{getProperty('nativeName')}}
+    </mat-card-subtitle>
+
+
+
+  </mat-card-header>
+  <mat-card-content>
+    <div class="wrapper">
+
+
+      <section class="columns">
+
+        <div class="column">
+
+          <label>Capital City:</label> {{getProperty('capital')}}
+          <br />
+          <mat-divider></mat-divider>
+          <br />
+          <label>Region:</label> {{getProperty('region')}}
+          <br />
+          <label>Subregion:</label> {{getProperty('subregion')}}
+          <br />
+          <label>Area:</label> {{getProperty('area')}} km<sup>2</sup>
+          <br />
+          <label>Timezones:</label>
+          <p *ngFor="let tzone of getProperty('timezones')">
+            {{tzone}} ({{tzone}}) <br />
+
+          </p>
+
+          <br />
+          <mat-divider></mat-divider>
+          <br />
+          <label>Population:</label> {{getProperty('population')}}
+          <br />
+          <label>Demonym:</label> {{getProperty('demonym')}}
+          <br />
+          <label>Gini coefficient:</label> {{getProperty('gini')}}
+          <br />
+
+          <mat-divider></mat-divider>
+          <br />
+          <label>Currencies:</label>
+          <p *ngFor="let currency of getProperty('currencies')">
+            {{currency.name}} ({{currency.symbol}} )<br />
+          </p>
+          <br />
+          <mat-divider></mat-divider>
+          <br />
+          <label>Languages:</label> <p *ngFor="let language of getProperty('languages')">
+            {{language.name}}
+
+          </p>
+          <br />
+          <mat-divider></mat-divider>
+          <br />
+          <label>Calling codes:</label> <p *ngFor="let callingCode of getProperty('callingCodes')">
+            {{callingCode}}   <br />
+          </p>
+
+          <label>Numeric code:</label> {{getProperty('numericCode')}}
+          <br />
+          <label>Top level domain:</label> {{getProperty('topLevelDomain')}}
+          <br />
+          <mat-divider></mat-divider>
+          <br />
+          <label>Regional blocs:</label>
+          <div *ngIf="getProperty('regionalBlocs')">
+            <p *ngFor="let bloc of getProperty('regionalBlocs')">
+              {{bloc.name}} ({{bloc.acronym}} )<br />
+            </p>
+          </div>
+          <br />
+        </div>
+
+
+        <div class="column">
+          <label>Bordering countries:</label>
+          <div *ngIf="getProperty('borders')">
+            <div class="borders" *ngIf="getProperty('borders').length;else no_country ">
+              <ul>
+                <li *ngFor="let border of getCountryBorders()">
+                  <a href="/country/{{border.alpha3Code}}">{{border.name}} </a> &nbsp; | &nbsp; <br />
+                </li>
+              </ul>
+           
+            </div>
+            </div>
+            <ng-template #no_country>None</ng-template>
+
+            <div #map class="map"></div>
+          </div>
+
+
+
+</section>
+
+    </div>
+
+
+
+
+
+
+  </mat-card-content>
+  
+</mat-card>

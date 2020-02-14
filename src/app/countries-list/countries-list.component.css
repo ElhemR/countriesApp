@@ -1,0 +1,48 @@
+img {
+  width: 100%;
+  max-width: 70px;
+  height: auto;
+
+}
+.mat-column-flag {
+  padding-top: 2px;
+  width: 80px;
+}
+
+.mat-column-name {
+  width:300px;
+  text-align:left;
+}
+.mat-column-population {
+  width: 100px;
+  text-align: left;
+}
+
+table {
+  background: rgba(255, 255, 255, 0.3)
+}
+tr:hover {
+  background: RGBA(222,235,247,0.8);
+}
+th {
+  background: #00A0D7
+}
+.example-container {
+  height: 700px;
+  overflow: auto;
+  width:75%;
+}
+container {
+  padding-left: 10%;
+  padding-right: 10%;
+}
+table,tbody {
+  width:100%
+}
+.mat-paginator-sticky {
+  bottom: 0px;
+  position: sticky;
+  z-index: 10;
+  background-color:#00A0D7 
+
+}
