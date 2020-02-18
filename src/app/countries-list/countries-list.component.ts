@@ -26,6 +26,20 @@ export class CountriesListComponent implements OnInit {
   }
   
 
+  //Filter on Country Name
+  applyFilter(filterValue: string) {
+    const tableFilters = [];
+    tableFilters.push({
+      id: 'name',
+      value: filterValue
+    });
+
+
+    this.dataSource.filter = JSON.stringify(tableFilters);
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
+  }
 
   public getCountries() {
  
@@ -35,7 +49,17 @@ export class CountriesListComponent implements OnInit {
       this.dataSource = new MatTableDataSource<object>(this.countries);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
-      
+      this.dataSource.filterPredicate =
+        (data, filtersJson: string) => {
+          const matchFilter = [];
+          const filters = JSON.parse(filtersJson);
+
+          filters.forEach(filter => {
+            const val = data[filter.id] === null ? '' : data[filter.id];
+            matchFilter.push(val.toLowerCase().includes(filter.value.toLowerCase()));
+          });
+          return matchFilter.every(Boolean);
+        };
     });
 
   }

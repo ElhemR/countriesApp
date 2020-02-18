@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { CountriesListComponent } from './countries-list/countries-list.component';
 import { CountryDetailComponent } from './country-detail/country-detail.component';
 import { MatTableModule } from '@angular/material/table';
-
+import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatCardModule } from '@angular/material/card';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSortModule } from '@angular/material/sort';
@@ -28,7 +28,7 @@ import { MatButtonModule } from '@angular/material/button';
     MatSortModule,
     MatPaginatorModule,
     MatCardModule,
-  
+    MatToolbarModule,
     HttpClientModule,
     MatDividerModule,
     MatButtonModule,
